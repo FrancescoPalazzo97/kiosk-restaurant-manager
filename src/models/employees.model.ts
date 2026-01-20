@@ -17,3 +17,4 @@ export const employeesSchema = z.object({
         .default(() => new Date())
 });
 
+export type Employee = z.infer<typeof employeesSchema>;
