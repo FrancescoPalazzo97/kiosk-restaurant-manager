@@ -1,10 +1,26 @@
-
+import { Routes, Route } from "react-router-dom"
+import { DefaultLayout } from "./layouts/DefaultLayout"
+import { AdminLayout } from "./layouts/AdminLayout"
 
 export function App() {
 
   return (
-    <>
-      <h1 className="text-2xl font-bold text-center">Kiosk Restaurant Manager</h1>
-    </>
+    <Routes>
+      <Route element={<DefaultLayout />}>
+
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route path="employees" />
+          <Route path="employees/:id" />
+          <Route path="settings" />
+          <Route path="dashboard/:date" />
+        </Route>
+
+        <Route path="/kiosk">
+          <Route index />
+        </Route>
+
+      </Route>
+      <Route path="*" element={<h1>404 | pagina non trovata</h1>} />
+    </Routes>
   )
 }
