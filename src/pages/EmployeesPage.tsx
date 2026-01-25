@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { store } from "../store/store";
+import { EmployeeCard } from "../components/EmployeeCard";
 
 export function EmployeesPage() {
     const employees = store((s) => s.employees);
@@ -33,9 +34,11 @@ export function EmployeesPage() {
                     Add Employee
                 </button>
             </div>
-            <ul>
+            <ul className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-y-4 mt-4 mx-2">
                 {employees.map((employee) => (
-                    <li key={employee.id}>{employee.fullname}</li>
+                    <li key={employee.id}>
+                        <EmployeeCard employee={employee} />
+                    </li>
                 ))}
             </ul>
         </div>
