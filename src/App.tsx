@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom"
 import { DefaultLayout } from "./layouts/DefaultLayout"
 import { AdminLayout } from "./layouts/AdminLayout"
 import { EmployeesPage } from "./pages/EmployeesPage"
+import { EmployeeDetailsPage } from "./pages/EmployeeDetailsPage"
 
 export function App() {
 
@@ -11,7 +12,7 @@ export function App() {
 
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="employees" element={<EmployeesPage />} />
-          <Route path="employees/:id" />
+          <Route path="employees/:id" element={<EmployeeDetailsPage />} />
           <Route path="settings" />
           <Route path="dashboard/:date" />
         </Route>
