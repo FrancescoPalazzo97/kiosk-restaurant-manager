@@ -1,6 +1,7 @@
 import type { StateCreator } from "zustand";
 import { employeesSchema, type Employee } from "../models/employees.model";
 import type { Store } from "../models/store.model";
+import { getRandomPinCode } from "../lib/utility";
 
 type EmployeeState = {
     employees: Employee[];
@@ -10,6 +11,7 @@ type EmployeeAction = {
     addEmployee: (fullname: string) => void;
     getEmployeeById: (employeeId: string) => Employee | null;
     updateFullname: (employeeId: string, newName: string) => void;
+    updatePinCode: (employeeId: string) => void
 }
 
 export type EmployeeSlice = EmployeeState & EmployeeAction;
@@ -50,6 +52,15 @@ export const createEmployeeSlice: StateCreator<
         set(s => ({
             employees: s.employees.map(e => e.id === employeeId
                 ? { ...e, fullname: newName }
+                : e
+            )
+        }))
+    },
+
+    updatePinCode: (employeeId) => {
+        set(s => ({
+            employees: s.employees.map(e => e.id === employeeId
+                ? { ...e, pinCode: getRandomPinCode() }
                 : e
             )
         }))
