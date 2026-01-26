@@ -1,5 +1,6 @@
 import type { StateCreator } from "zustand";
 import type { Store } from "../models/store.model";
+import { env } from "../env";
 
 type PasswordState = {
     adminPassword: string
@@ -19,7 +20,7 @@ export const createPasswordSlice: StateCreator<
     [],
     PasswordSlice
 > = (set, get) => ({
-    adminPassword: 'Admin1234',
+    adminPassword: env.VITE_ADMIN_PASSWORD,
     isAdminAuthenticated: false,
 
     authenticateAdmin: (pass) => {
