@@ -3,8 +3,8 @@ import { store } from "../store/store";
 import { EmployeeCard } from "../components/EmployeeCard";
 
 export function EmployeesPage() {
-    const employees = store((s) => s.employees);
-    const addEmployee = store((s) => s.addEmployee);
+    const employees = store(s => s.employees);
+    const addEmployee = store(s => s.addEmployee);
 
     const inputRef = useRef<HTMLInputElement | null>(null);
 
