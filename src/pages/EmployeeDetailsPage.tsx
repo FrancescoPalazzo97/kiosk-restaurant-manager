@@ -16,7 +16,7 @@ export function EmployeeDetailsPage() {
 
     const handleChangeName = () => {
         const newName = prompt('Inserisci nuovo nome');
-        if (!newName) {
+        if (!newName?.trim()) {
             console.error('Nome non iserito!');
             return;
         }

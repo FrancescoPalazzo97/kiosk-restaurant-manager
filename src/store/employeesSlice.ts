@@ -24,7 +24,7 @@ export const createEmployeeSlice: StateCreator<
 > = (set) => ({
     employees: [],
 
-    addEmployee: (fullname: string) => {
+    addEmployee: (fullname) => {
         const validation = employeesSchema.safeParse({ fullname });
 
         if (!validation.success) {
@@ -37,6 +37,12 @@ export const createEmployeeSlice: StateCreator<
     },
 
     updateFullname: (employeeId, newName) => {
+        const validation = employeesSchema.shape.fullname.safeParse(newName);
+
+        if (!validation.success) {
+            throw new Error(validation.error.message);
+        }
+
         set(s => {
             const employee = s.employees.find(e => e.id === employeeId);
             if (employee) employee.fullname = newName;

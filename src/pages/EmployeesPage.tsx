@@ -9,12 +9,11 @@ export function EmployeesPage() {
     const inputRef = useRef<HTMLInputElement | null>(null);
 
     const handleAdd = () => {
-        if (!inputRef.current) {
-            console.error('InputRef is NULL');
-        } else {
-            addEmployee(inputRef.current.value);
-            inputRef.current.value = "";
-        }
+        const name = inputRef.current?.value.trim();
+        if (!name) return;
+
+        addEmployee(name);
+        inputRef.current!.value = '';
     };
 
     return (
