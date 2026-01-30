@@ -10,7 +10,13 @@ export function LinkElement({ path, label }: LinkElementProps) {
         <li>
             <NavLink
                 to={path}
-                className="bg-sky-600 hover:bg-sky-400 rounded-md py-1 px-2 active:bg-sky-800"
+                className={({ isActive }) =>
+                    `inline-flex items-center px-4 py-2 rounded-lg font-medium text-sm transition-all duration-200 ${
+                        isActive
+                            ? "bg-accent-primary text-bg-primary shadow-lg shadow-accent-primary/25"
+                            : "bg-bg-elevated text-text-secondary hover:bg-border-soft hover:text-text-primary"
+                    }`
+                }
             >
                 {label}
             </NavLink>

@@ -1,5 +1,55 @@
 @import "tailwindcss";
 
+@theme {
+    /* Background & Superfici */
+    --color-bg-primary: #0E0E11;
+    --color-bg-secondary: #1A1B22;
+    --color-bg-elevated: #232635;
+    --color-border-soft: #2F3347;
+
+    /* Testi & Icone */
+    --color-text-primary: #E6E8F0;
+    --color-text-secondary: #A0A4B8;
+    --color-text-disabled: #5F637A;
+    --color-icon-active: #C7CBDE;
+
+    /* Accent & Interazioni */
+    --color-accent-primary: #00E5FF;
+    --color-accent-hover: #33EDFF;
+    --color-accent-focus: #6FF4FF;
+    --color-accent-secondary: #9D4EDD;
+
+    /* Stati di Sistema */
+    --color-success: #A7F000;
+    --color-warning: #FF8C1A;
+    --color-error: #FF2E88;
+    --color-info: #4DDFFF;
+}
+
 body {
-    @apply bg-slate-900 text-white
+    @apply bg-bg-primary text-text-primary;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Focus ring globale */
+*:focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent-focus;
+}
+
+/* Scrollbar stilizzata */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-bg-secondary;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-border-soft rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-text-disabled;
 }

@@ -5,7 +5,7 @@ export function NavLinkList() {
     const isAdminAuthenticated = store(s => s.isAdminAuthenticated);
 
     return (
-        <ul className="flex gap-2">
+        <ul className="flex flex-wrap gap-2 sm:gap-3">
             <LinkElement path="/kiosk" label="Home" />
             <LinkElement path="/admin" label="Admin" />
             {isAdminAuthenticated &&
