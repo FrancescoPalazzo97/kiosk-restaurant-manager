@@ -3,14 +3,16 @@ import { immer } from "zustand/middleware/immer";
 import { persist } from "zustand/middleware";
 import { createEmployeeSlice } from "./employeesSlice";
 import type { Store } from "../models/store.model";
-import { createPasswordSlice } from "./passwordSlice";
+import { createAdminSlice } from "./adminSlice";
+import { createModalSlice } from "./modalSlice";
 
 // Temporaneamente senza persist per debug
 export const store = create<Store>()(
     persist(
         immer((...args) => ({
             ...createEmployeeSlice(...args),
-            ...createPasswordSlice(...args)
+            ...createAdminSlice(...args),
+            ...createModalSlice(...args)
         })),
         {
             name: 'kiosk-store',

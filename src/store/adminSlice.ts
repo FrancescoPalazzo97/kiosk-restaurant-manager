@@ -2,23 +2,23 @@ import type { StateCreator } from "zustand";
 import type { Store } from "../models/store.model";
 import { env } from "../env";
 
-type PasswordState = {
+type AdminState = {
     adminPassword: string
     isAdminAuthenticated: boolean
 }
 
-type PasswordActions = {
+type AdminActions = {
     authenticateAdmin: (pass: string | null) => boolean
     logoutAdmin: () => void
 }
 
-export type PasswordSlice = PasswordState & PasswordActions;
+export type AdminSlice = AdminState & AdminActions;
 
-export const createPasswordSlice: StateCreator<
+export const createAdminSlice: StateCreator<
     Store,
     [['zustand/immer', never], ['zustand/persist', unknown]],
     [],
-    PasswordSlice
+    AdminSlice
 > = (set, get) => ({
     adminPassword: env.VITE_ADMIN_PASSWORD,
     isAdminAuthenticated: false,
