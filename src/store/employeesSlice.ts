@@ -9,6 +9,7 @@ type EmployeeState = {
 
 type EmployeeAction = {
     addEmployee: (fullname: string) => void;
+    getEmployeeById: (employeeId: string) => Employee;
     updateFullname: (employeeId: string, newName: string) => void;
     updatePinCode: (employeeId: string) => void;
     deleteEmployee: (employeeId: string) => void
@@ -21,7 +22,7 @@ export const createEmployeeSlice: StateCreator<
     [['zustand/immer', never], ['zustand/persist', unknown]],
     [],
     EmployeeSlice
-> = (set) => ({
+> = (set, get) => ({
     employees: [],
 
     addEmployee: (fullname) => {
@@ -34,6 +35,16 @@ export const createEmployeeSlice: StateCreator<
         set((s) => {
             s.employees.push(validation.data);
         });
+    },
+
+    getEmployeeById: (employeeId) => {
+        const employee = get().employees.find(emp => emp.id === employeeId);
+
+        if (!employee) {
+            throw new Error(`Employee con id ${employeeId} non trovato`);
+        }
+
+        return employee;
     },
 
     updateFullname: (employeeId, newName) => {

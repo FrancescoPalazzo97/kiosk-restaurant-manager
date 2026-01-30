@@ -8,7 +8,7 @@ type EntranceRecordState = {
 }
 
 type EntranceRecordActions = {
-    addNewEntranceRecord: (employeeId: string, inputPinCode: string) => boolean,
+    addNewEntranceRecord: (employeeId: string, inputPinCode: string) => void,
 }
 
 export type EntranceRecordSlice = EntranceRecordState & EntranceRecordActions;
@@ -22,16 +22,10 @@ export const createEntranceRecordSlice: StateCreator<
     entranceRecords: [],
 
     addNewEntranceRecord: (employeeId, inputPinCode) => {
-        const employee = get().employees.find(emp => emp.id === employeeId);
-
-        if (!employee) {
-            console.error(`Employee con id ${employeeId} non trovato`);
-            return false;
-        }
+        const employee = get().getEmployeeById(employeeId);
 
         if (employee.pinCode !== inputPinCode) {
-            console.error('Il Pin Code inserito non combacia');
-            return false;
+            throw new Error('Il Pin Code inserito non combacia');
         }
 
         const isAlreadyClocked = get().entranceRecords.some(er => {
@@ -42,20 +36,17 @@ export const createEntranceRecordSlice: StateCreator<
         });
 
         if (isAlreadyClocked) {
-            console.error('Il dipendente ha già timbrato per oggi!');
-            return false;
+            throw new Error('Il dipendente ha già timbrato per oggi!');
         }
 
         const validation = entranceRecordSchema.safeParse({ employeeId });
 
         if (!validation.success) {
-            console.error(validation.error);
-            return false;
+            throw new Error(validation.error.message);
         }
 
         set(s => {
             s.entranceRecords.push(validation.data)
         });
-        return true;
     }
 })

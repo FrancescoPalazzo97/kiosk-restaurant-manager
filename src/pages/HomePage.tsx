@@ -1,9 +1,11 @@
 import { LogIn, User } from "lucide-react";
 import { ClockDisplay } from "../components/ClockDispaly";
 import { store } from "../store/store";
+import { tryCatch } from "../lib/tryCatch";
 
 export function HomePage() {
     const employees = store(s => s.employees);
+    const openModal = store(s => s.openModal);
     const addNewEntranceRecord = store(s => s.addNewEntranceRecord);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -11,12 +13,14 @@ export function HomePage() {
         const selectedEmployee: string = e.currentTarget.selectEmployee.value;
         const inputPinCode: string = e.currentTarget.pinCodeEmployee.value;
 
-        const success = addNewEntranceRecord(selectedEmployee, inputPinCode);
+        const [_, error] = tryCatch<void>(() => addNewEntranceRecord(selectedEmployee, inputPinCode));
 
-        if (success) {
-            alert('Successo')
+        if (error) {
+            openModal(error.message, 'Errore');
+            e.currentTarget.reset();
         } else {
-            alert('Fallimento')
+            openModal('Hai timbrato con successo!', 'Conferma');
+            e.currentTarget.reset();
         }
     }
 
