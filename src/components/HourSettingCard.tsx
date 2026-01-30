@@ -12,7 +12,7 @@ export function HourSettingCard() {
                 <span className="text-sm font-medium uppercase tracking-wide">Orario di Entrata</span>
             </div>
             <p className="text-sm text-text-disabled mb-4">
-                L'orario standard di inizio turno per i dipendenti
+                L'orario standard di inizio turno
             </p>
             <input
                 type="time"

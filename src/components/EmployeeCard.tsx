@@ -29,12 +29,17 @@ export function EmployeeCard({ employee }: EmployeeCardProps) {
                         <CircleUserRound className="size-10 text-icon-active group-hover:text-accent-primary transition-colors duration-300" />
                     </div>
                 </div>
+                <div className="flex justify-center">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                </div>
                 <span className="font-medium text-text-primary text-center leading-tight">
                     {employee.fullname}
                 </span>
             </Link>
             <button
-                className="absolute top-3 right-3 p-2 rounded-lg bg-transparent text-text-disabled opacity-0 group-hover:opacity-100 hover:bg-error/10 hover:text-error transition-all duration-200"
+                className="absolute top-3 right-3 p-2 rounded-lg bg-transparent text-text-disabled opacity-0 group-hover:opacity-100 hover:bg-error/10 hover:text-error transition-all duration-200 cursor-pointer"
                 onClick={handleDelete}
                 title="Elimina dipendente"
             >

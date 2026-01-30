@@ -39,6 +39,17 @@ export const createEntranceRecordSlice: StateCreator<
             throw new Error('Il dipendente ha già timbrato per oggi!');
         }
 
+        const isTooSoon = () => {
+            const now = dayjs();
+            const startHour = dayjs(`${now.format('YYYY-MM-DD')} ${get().startHour}`);
+            const earliestAllowed = startHour.subtract(get().lateTollerance, 'minute');
+            return now.isBefore(earliestAllowed);
+        }
+
+        if (isTooSoon()) {
+            throw new Error('È troppo presto! Torna dopo');
+        }
+
         const validation = entranceRecordSchema.safeParse({ employeeId });
 
         if (!validation.success) {

@@ -4,11 +4,13 @@ import { settingsSchema } from "../models/settings.model";
 
 type SettingsState = {
     startHour: string,
+    soonTollerance: number,
     lateTollerance: number
 }
 
 type SettingsActions = {
     setStartHour: (newStartHour: string) => void,
+    setSoonTollerance: (newSoonTollerance: number) => void,
     setLateTollerance: (newLateTollerance: number) => void
 }
 
@@ -21,6 +23,7 @@ export const createSettingsSlice: StateCreator<
     SettingsSlice
 > = (set) => ({
     startHour: '08:00',
+    soonTollerance: 15,
     lateTollerance: 5,
 
     setStartHour: (newStartHour) => {
@@ -33,6 +36,19 @@ export const createSettingsSlice: StateCreator<
 
         set(s => {
             s.startHour = validation.data
+        })
+    },
+
+    setSoonTollerance: (newSoonTollerance) => {
+        const validation = settingsSchema.shape.soonTollerance.safeParse(newSoonTollerance);
+
+        if (!validation.success) {
+            console.error(validation.error);
+            return;
+        }
+
+        set(s => {
+            s.soonTollerance = validation.data
         })
     },
 
