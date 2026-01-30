@@ -1,15 +1,15 @@
 import type { StateCreator } from "zustand";
 import type { Store } from "../models/store.model";
-import type React from "react";
+import type { ReactNode } from "react";
 
 type ModalState = {
     isOpen: boolean,
-    modalContent: React.ReactNode | null,
+    modalContent: ReactNode | null,
     modalTitle: string | null
 }
 
 type ModalActions = {
-    openModal: (content?: React.ReactNode, title?: string) => void,
+    openModal: (content?: ReactNode, title?: string) => void,
     closeModal: () => void
 }
 

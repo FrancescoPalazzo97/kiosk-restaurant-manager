@@ -7,4 +7,7 @@ export const entranceRecordSchema = z.object({
     employeeId: z.uuid(),
 
     date: z.date()
-})
+        .default(() => new Date())
+});
+
+export type EntranceRecord = z.infer<typeof entranceRecordSchema>;

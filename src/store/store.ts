@@ -5,6 +5,7 @@ import { createEmployeeSlice } from "./employeesSlice";
 import type { Store } from "../models/store.model";
 import { createAdminSlice } from "./adminSlice";
 import { createModalSlice } from "./modalSlice";
+import { createEntranceRecordSlice } from "./entranceRecordSlice";
 
 // Temporaneamente senza persist per debug
 export const store = create<Store>()(
@@ -12,12 +13,20 @@ export const store = create<Store>()(
         immer((...args) => ({
             ...createEmployeeSlice(...args),
             ...createAdminSlice(...args),
-            ...createModalSlice(...args)
+            ...createModalSlice(...args),
+            ...createEntranceRecordSlice(...args)
         })),
         {
             name: 'kiosk-store',
             partialize: (state) => {
-                const { isAdminAuthenticated, ...persisted } = state;
+                const {
+                    isAdminAuthenticated,
+                    isOpen,
+                    modalContent,
+                    modalTitle,
+                    ...persisted
+                } = state;
+
                 return persisted;
             }
         }
