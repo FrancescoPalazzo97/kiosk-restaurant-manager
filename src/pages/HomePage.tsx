@@ -1,28 +1,12 @@
-import { Clock, LogIn, LogOut } from "lucide-react";
+import { LogIn, LogOut } from "lucide-react";
+import { ClockDisplay } from "../components/ClockDispaly";
 
 export function HomePage() {
-    const currentTime = new Date().toLocaleTimeString('it-IT', {
-        hour: '2-digit',
-        minute: '2-digit'
-    });
 
     return (
         <div className="flex flex-col items-center justify-center min-h-[60vh] space-y-8">
             {/* Clock display */}
-            <div className="text-center">
-                <div className="inline-flex items-center gap-3 text-6xl sm:text-8xl font-bold text-text-primary tracking-tight">
-                    <Clock className="size-12 sm:size-16 text-accent-primary" />
-                    {currentTime}
-                </div>
-                <p className="text-text-secondary mt-2">
-                    {new Date().toLocaleDateString('it-IT', {
-                        weekday: 'long',
-                        day: 'numeric',
-                        month: 'long',
-                        year: 'numeric'
-                    })}
-                </p>
-            </div>
+            <ClockDisplay />
 
             {/* PIN input placeholder */}
             <div className="w-full max-w-sm space-y-4">
