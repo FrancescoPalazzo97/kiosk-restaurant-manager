@@ -6,6 +6,7 @@ import type { Store } from "../models/store.model";
 import { createAdminSlice } from "./adminSlice";
 import { createModalSlice } from "./modalSlice";
 import { createEntranceRecordSlice } from "./entranceRecordSlice";
+import { createSettingsSlice } from "./settingsSlice";
 
 // Temporaneamente senza persist per debug
 export const store = create<Store>()(
@@ -14,7 +15,8 @@ export const store = create<Store>()(
             ...createEmployeeSlice(...args),
             ...createAdminSlice(...args),
             ...createModalSlice(...args),
-            ...createEntranceRecordSlice(...args)
+            ...createEntranceRecordSlice(...args),
+            ...createSettingsSlice(...args)
         })),
         {
             name: 'kiosk-store',

@@ -4,6 +4,7 @@ import { AdminLayout } from "./layouts/AdminLayout"
 import { EmployeesPage } from "./pages/EmployeesPage"
 import { EmployeeDetailsPage } from "./pages/EmployeeDetailsPage"
 import { HomePage } from "./pages/HomePage"
+import { SettingsPage } from "./pages/SettingsPage"
 
 export function App() {
 
@@ -16,7 +17,7 @@ export function App() {
         <Route path="/admin" element={<AdminLayout />}>
           <Route index path="employees" element={<EmployeesPage />} />
           <Route path="employees/:id" element={<EmployeeDetailsPage />} />
-          <Route path="settings" />
+          <Route path="settings" element={<SettingsPage />} />
           <Route path="dashboard/:date" />
         </Route>
 

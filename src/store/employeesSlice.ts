@@ -29,7 +29,8 @@ export const createEmployeeSlice: StateCreator<
         const validation = employeesSchema.safeParse({ fullname });
 
         if (!validation.success) {
-            throw new Error(validation.error.message);
+            console.log(validation.error.message);
+            return;
         }
 
         set((s) => {
@@ -51,7 +52,7 @@ export const createEmployeeSlice: StateCreator<
         const validation = employeesSchema.shape.fullname.safeParse(newName);
 
         if (!validation.success) {
-            throw new Error(validation.error.message);
+            console.error(validation.error.message);
         }
 
         set(s => {
