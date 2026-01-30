@@ -27,6 +27,10 @@ export function EmployeeDetailsPage() {
         updatePinCode(employee.id);
     }
 
+    const handleDelete = () => {
+
+    }
+
     return (
         <>
             <p>{employee.fullname}</p>
