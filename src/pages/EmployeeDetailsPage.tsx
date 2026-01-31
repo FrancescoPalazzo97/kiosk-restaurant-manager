@@ -1,6 +1,7 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, CircleUserRound, Edit3, KeyRound, RefreshCw, Trash2 } from "lucide-react";
+import { ArrowLeft, Calendar, CircleUserRound, Edit3, KeyRound, RefreshCw, Trash2 } from "lucide-react";
 import { store } from "../store/store";
+import { AttendanceCalendar } from "../components/AttendanceCalendar";
 
 export function EmployeeDetailsPage() {
     const employees = store(s => s.employees);
@@ -108,6 +109,15 @@ export function EmployeeDetailsPage() {
                         Genera nuovo PIN
                     </button>
                 </div>
+            </div>
+
+            {/* Attendance Calendar */}
+            <div className="bg-bg-secondary border border-border-soft rounded-xl p-6">
+                <div className="flex items-center gap-2 text-text-secondary mb-4">
+                    <Calendar className="size-4" />
+                    <span className="text-sm font-medium uppercase tracking-wide">Presenze</span>
+                </div>
+                <AttendanceCalendar employee={employee} />
             </div>
 
             {/* Danger zone */}
