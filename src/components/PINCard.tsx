@@ -1,16 +1,35 @@
-import { Asterisk, Eye, KeyRound, RefreshCw } from "lucide-react";
+import { Asterisk, Eye, EyeClosed, KeyRound, RefreshCw } from "lucide-react";
 import { store } from "../store/store";
 import type { Employee } from "../models/employees.model";
+import { useState } from "react";
+
+type AsterisksProps = {
+    digits?: number
+}
+
+function Asterisks({ digits = 4 }: AsterisksProps) {
+    return (
+        <span className="flex my-0.5">
+            {[...Array(digits)].map(_ => <Asterisk />)}
+        </span>
+    )
+}
 
 type PINCardProps = {
     employee: Employee
 }
 
 export function PINCard({ employee }: PINCardProps) {
+    const [show, setShow] = useState(false);
+
     const updatePinCode = store(s => s.updatePinCode);
 
     const handleChangePinCode = () => {
         updatePinCode(employee.id);
+    }
+
+    const handleShowPinCode = () => {
+        setShow(prev => !prev);
     }
 
     return (
@@ -23,12 +42,12 @@ export function PINCard({ employee }: PINCardProps) {
             </div>
             <div className="flex justify-between  my-4">
                 <p className="text-xl font-mono font-semibold text-accent-primary tracking-widest">
-                    {employee.pinCode}
+                    {show ? employee.pinCode : <Asterisks />}
                 </p>
                 <button
-
+                    onClick={handleShowPinCode}
                 >
-                    <Eye />
+                    {show ? <Eye /> : <EyeClosed />}
                 </button>
             </div>
             <button

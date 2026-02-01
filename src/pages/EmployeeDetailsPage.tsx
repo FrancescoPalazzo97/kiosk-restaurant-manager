@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { Calendar, CircleUserRound } from "lucide-react";
+import { Calendar } from "lucide-react";
 import { store } from "../store/store";
 import { AttendanceCalendar } from "../components/AttendanceCalendar";
 import { EmployeeNotFound } from "../components/EmployeeNotFound";
