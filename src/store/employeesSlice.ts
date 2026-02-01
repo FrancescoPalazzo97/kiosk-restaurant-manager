@@ -71,7 +71,10 @@ export const createEmployeeSlice: StateCreator<
     deleteEmployee: (employeeId) => {
         set(s => {
             const employeeIndex = s.employees.findIndex(e => e.id === employeeId);
-            if (employeeIndex !== -1) s.employees.splice(employeeIndex, 1);
+            if (employeeIndex !== -1) {
+                s.employees.splice(employeeIndex, 1);
+                s.entranceRecords = s.entranceRecords.filter(er => er.employeeId !== employeeId);
+            }
         });
     }
 });
