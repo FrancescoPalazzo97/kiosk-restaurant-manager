@@ -1,8 +1,10 @@
-import { CircleUserRound, Trash2 } from "lucide-react";
+import { Trash2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import type { Employee } from "../models/employees.model";
 import { store } from "../store/store";
 import { DeleteEmployeeForm } from "./DeleteEmployeeForm";
+import { AttendanceCounter } from "./AttendanceCounter";
+import { PhotoProfile } from "./PhotoProfile";
 
 type EmployeeCardProps = {
     employee: Employee;
@@ -28,9 +30,11 @@ export function EmployeeCard({ employee }: EmployeeCardProps) {
                 to={`/admin/employees/${employee.id}`}
             >
                 <div className="relative">
-                    <div className="w-16 h-16 rounded-full bg-bg-elevated flex items-center justify-center group-hover:bg-accent-primary/10 transition-colors duration-300">
-                        <CircleUserRound className="size-10 text-icon-active group-hover:text-accent-primary transition-colors duration-300" />
-                    </div>
+                    <PhotoProfile
+                        w={16}
+                        h={16}
+                        className="group-hover:bg-accent-primary/10 transition-colors duration-300"
+                    />
                 </div>
 
                 <AttendanceCounter

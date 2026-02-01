@@ -14,7 +14,7 @@ export function ProfileHeader({ employee }: ProfileHeaderProps) {
     return (
         <div className="bg-bg-secondary border border-border-soft rounded-xl p-8">
             <div className="flex flex-col sm:flex-row items-center gap-6">
-                <PhotoProfile />
+                <PhotoProfile w={24} h={24} />
                 <div className="text-center sm:text-left">
                     <h1 className="text-2xl font-bold text-text-primary">{employee.fullname}</h1>
                     <p
