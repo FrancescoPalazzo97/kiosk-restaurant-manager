@@ -24,9 +24,9 @@ export function EmployeeCard({ employee }: EmployeeCardProps) {
     }
 
     return (
-        <div className="group relative bg-bg-secondary border border-border-soft rounded-xl p-5 transition-all duration-300 hover:bg-bg-elevated hover:border-accent-primary/30 hover:shadow-lg hover:shadow-accent-primary/5">
+        <div className="group relative bg-bg-secondary border border-border-soft rounded-xl transition-all duration-300 hover:bg-bg-elevated hover:border-accent-primary/30 hover:shadow-lg hover:shadow-accent-primary/5">
             <Link
-                className="flex flex-col items-center gap-3"
+                className="flex flex-col items-center gap-3 p-5"
                 to={`/admin/employees/${employee.id}`}
             >
                 <div className="relative">

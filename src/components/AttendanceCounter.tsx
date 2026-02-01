@@ -31,6 +31,7 @@ export function AttendanceCounter({ employeeId, employeeCreation }: AttendanceCo
 
     const data = days.reduce(
         (acc, day) => {
+            if (!day.isCurrentMonth) return acc;
             const status = getAttendanceStatus(day.date.toDate(), employeeCreation, filteredRecords, startHour, lateTollerance);
             acc[status]++;
             return acc;
@@ -40,9 +41,9 @@ export function AttendanceCounter({ employeeId, employeeCreation }: AttendanceCo
 
     return (
         <div className="flex justify-center">
-            <span className="text-green-400 font-medium me-1">{data["on-time"]}</span>
-            <span className="text-yellow-400 font-medium me-1">{data["late"]}</span>
-            <span className="text-red-400 font-medium me-1">{data["absent"]}</span>
+            <span className="text-green-400 font-medium me-1.5">{data["on-time"]}</span>
+            <span className="text-yellow-400 font-medium me-1.5">{data["late"]}</span>
+            <span className="text-red-400 font-medium me-1.5">{data["absent"]}</span>
             <span className="text-text-disabled">{data['future']}</span>
         </div>
     )

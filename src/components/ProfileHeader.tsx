@@ -19,7 +19,7 @@ export function ProfileHeader({ employee }: ProfileHeaderProps) {
                     <h1 className="text-2xl font-bold text-text-primary">{employee.fullname}</h1>
                     <p
                         onClick={() => setShow(prev => !prev)}
-                        className="text-text-secondary mt-1"
+                        className="text-text-secondary mt-1 cursor-pointer"
                     >
                         ID: {profileId}
                     </p>
