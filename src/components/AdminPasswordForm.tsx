@@ -1,26 +1,8 @@
-import type React from "react"
-import { useState } from "react";
 import { KeyRound, LogIn } from "lucide-react";
-import { store } from "../store/store";
-import { useNavigate } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
 
 export function AdminPasswordForm() {
-    const authenticateAdmin = store(s => s.authenticateAdmin);
-    const close = store(s => s.closeModal);
-    const navigate = useNavigate();
-    const [error, setError] = useState(false);
-
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        const inputPassword: string = e.currentTarget.inputPassword.value;
-        const success = authenticateAdmin(inputPassword);
-        if (!success) {
-            setError(true);
-        } else {
-            navigate('/admin/employees');
-            close();
-        }
-    }
+    const [handleSubmit, error, setError] = useAuth();
 
     return (
         <form onSubmit={handleSubmit} className="space-y-5">
@@ -34,11 +16,10 @@ export function AdminPasswordForm() {
                     type="password"
                     autoFocus
                     placeholder="Inserisci la password..."
-                    className={`w-full bg-bg-secondary border rounded-lg px-4 py-3 text-text-primary placeholder:text-text-disabled focus:ring-1 transition-colors ${
-                        error
-                            ? "border-error focus:border-error focus:ring-error"
-                            : "border-border-soft focus:border-accent-primary focus:ring-accent-primary"
-                    }`}
+                    className={`w-full bg-bg-secondary border rounded-lg px-4 py-3 text-text-primary placeholder:text-text-disabled focus:ring-1 transition-colors ${error
+                        ? "border-error focus:border-error focus:ring-error"
+                        : "border-border-soft focus:border-accent-primary focus:ring-accent-primary"
+                        }`}
                     onChange={() => error && setError(false)}
                 />
                 {error && (

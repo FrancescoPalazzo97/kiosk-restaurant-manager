@@ -8,7 +8,7 @@ export function AdminLayout() {
     const navigate = useNavigate();
 
     if (!isAdminAuthenticated) {
-        return <Navigate to='/kiosk' />
+        return <Navigate to='/kiosk' />;
     }
 
     const handleLogout = () => {
