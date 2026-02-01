@@ -9,7 +9,7 @@ type ProfileHeaderProps = {
 export function ProfileHeader({ employee }: ProfileHeaderProps) {
     const [show, setShow] = useState(false);
 
-    const profileId = show ? employee.id : employee.id.slice(0, 8);
+    const profileId = show ? employee.id : `${employee.id.slice(0, 8)}...`;
 
     return (
         <div className="bg-bg-secondary border border-border-soft rounded-xl p-8">
@@ -21,7 +21,7 @@ export function ProfileHeader({ employee }: ProfileHeaderProps) {
                         onClick={() => setShow(prev => !prev)}
                         className="text-text-secondary mt-1"
                     >
-                        ID: {profileId}...
+                        ID: {profileId}
                     </p>
                 </div>
             </div>

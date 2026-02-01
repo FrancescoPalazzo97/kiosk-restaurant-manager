@@ -29,13 +29,13 @@ export function AttendanceCalendar({ employee }: AttendanceCalendarProps) {
         <div className="space-y-4">
             {/* Header navigazione */}
             <div className="flex items-center justify-between">
-                <button onClick={prevMonth}>
+                <button className="cursor-pointer" onClick={prevMonth}>
                     <ChevronLeft className="size-5" />
                 </button>
                 <h4 className="text-lg font-semibold capitalize">
                     {currentMonth.format('MMMM YYYY')}
                 </h4>
-                <button onClick={nextMonth}>
+                <button className="cursor-pointer" onClick={nextMonth}>
                     <ChevronRight className="size-5" />
                 </button>
             </div>

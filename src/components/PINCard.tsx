@@ -10,7 +10,7 @@ type AsterisksProps = {
 function Asterisks({ digits = 4 }: AsterisksProps) {
     return (
         <span className="flex my-0.5">
-            {[...Array(digits)].map(_ => <Asterisk />)}
+            {[...Array(digits)].map((_, i) => <Asterisk key={`asterisk-${i}`} />)}
         </span>
     )
 }

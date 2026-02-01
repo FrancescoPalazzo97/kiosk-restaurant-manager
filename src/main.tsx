@@ -3,6 +3,10 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import { App } from './App.tsx';
 import { BrowserRouter } from 'react-router-dom';
+import dayjs from 'dayjs';
+import 'dayjs/locale/it';
+
+dayjs.locale('it');
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

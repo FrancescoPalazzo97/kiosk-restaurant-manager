@@ -2,20 +2,23 @@ import { CircleUserRound, Trash2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import type { Employee } from "../models/employees.model";
 import { store } from "../store/store";
+import { DeleteEmployeeForm } from "./DeleteEmployeeForm";
 
 type EmployeeCardProps = {
     employee: Employee;
 };
 
 export function EmployeeCard({ employee }: EmployeeCardProps) {
-    const deleteEmployee = store(s => s.deleteEmployee);
+    const openModal = store(s => s.openModal);
 
-    const handleDelete = (e: React.MouseEvent) => {
-        e.preventDefault();
-        e.stopPropagation();
-        if (confirm('Vuoi cancellare questo dipendente?')) {
-            deleteEmployee(employee.id);
-        }
+    const handleClick = () => {
+        openModal(
+            <DeleteEmployeeForm
+                employeeId={employee.id}
+                employeeFullname={employee.fullname}
+            />,
+            'Conferma eliminazione'
+        )
     }
 
     return (
@@ -40,7 +43,7 @@ export function EmployeeCard({ employee }: EmployeeCardProps) {
             </Link>
             <button
                 className="absolute top-3 right-3 p-2 rounded-lg bg-transparent text-text-disabled opacity-0 group-hover:opacity-100 hover:bg-error/10 hover:text-error transition-all duration-200 cursor-pointer"
-                onClick={handleDelete}
+                onClick={handleClick}
                 title="Elimina dipendente"
             >
                 <Trash2 className="size-4" />
