@@ -32,11 +32,12 @@ export function EmployeeCard({ employee }: EmployeeCardProps) {
                         <CircleUserRound className="size-10 text-icon-active group-hover:text-accent-primary transition-colors duration-300" />
                     </div>
                 </div>
-                <div className="flex justify-center">
-                    <span>1</span>
-                    <span>2</span>
-                    <span>3</span>
-                </div>
+
+                <AttendanceCounter
+                    employeeId={employee.id}
+                    employeeCreation={employee.createdAt}
+                />
+
                 <span className="font-medium text-text-primary text-center leading-tight">
                     {employee.fullname}
                 </span>
