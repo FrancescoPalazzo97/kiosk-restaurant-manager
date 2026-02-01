@@ -1,7 +1,7 @@
 import dayjs from "dayjs"
 import { useMemo, useState } from "react"
 import { store } from "../store/store";
-import { ChevronLeft, ChevronRight, Diamond } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { getAttendanceStatus, getMonthDays, getStatusClasses } from "../lib/attendanceUtils";
 import type { Employee } from "../models/employees.model";
 
