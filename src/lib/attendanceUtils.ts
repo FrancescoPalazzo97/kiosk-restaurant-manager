@@ -17,7 +17,7 @@ export function getAttendanceStatus(
     creationDate: Date,
     employeeRecords: EntranceRecord[],
     startHour: string,
-    lateTollerance: number
+    lateTolerance: number
 ): AttendanceStatus {
     const today = dayjs().startOf('day');
     const dateToConfront = dayjs(date).startOf('day');
@@ -40,9 +40,9 @@ export function getAttendanceStatus(
     const [h, m] = splitHour(startHour);
     const recordTime = dayjs(record.date);
     const startTime = dayjs().hour(h).minute(m);
-    const lateTolleranceTime = startTime.add(lateTollerance, 'minute');
+    const lateToleranceTime = startTime.add(lateTolerance, 'minute');
 
-    if (recordTime.isAfter(lateTolleranceTime)) {
+    if (recordTime.isAfter(lateToleranceTime)) {
         return 'late';
     }
 

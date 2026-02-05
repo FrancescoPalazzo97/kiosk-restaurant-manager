@@ -42,7 +42,7 @@ export const createEntranceRecordSlice: StateCreator<
         const isTooSoon = () => {
             const now = dayjs();
             const startHour = dayjs(`${now.format('YYYY-MM-DD')} ${get().startHour}`);
-            const earliestAllowed = startHour.subtract(get().lateTollerance, 'minute');
+            const earliestAllowed = startHour.subtract(get().lateTolerance, 'minute');
             return now.isBefore(earliestAllowed);
         }
 

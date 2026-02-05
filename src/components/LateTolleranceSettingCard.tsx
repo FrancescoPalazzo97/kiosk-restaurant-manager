@@ -1,9 +1,9 @@
 import { Timer } from "lucide-react";
 import { store } from "../store/store";
 
-export function LateTolleranceSettingCard() {
-    const lateTollerance = store(s => s.lateTollerance);
-    const setLateTollerance = store(s => s.setLateTollerance);
+export function LateToleranceSettingCard() {
+    const lateTolerance = store(s => s.lateTolerance);
+    const setLateTolerance = store(s => s.setLateTolerance);
 
     return (
         <div className="bg-bg-secondary border border-border-soft rounded-xl p-6">
@@ -18,8 +18,8 @@ export function LateTolleranceSettingCard() {
                 <input
                     type="number"
                     min={0}
-                    value={lateTollerance}
-                    onChange={e => setLateTollerance(Number(e.target.value))}
+                    value={lateTolerance}
+                    onChange={e => setLateTolerance(Number(e.target.value))}
                     className="w-full bg-bg-elevated border border-border-soft rounded-lg px-4 py-3 pr-16 text-text-primary text-lg font-mono focus:border-accent-primary focus:ring-1 focus:ring-accent-primary transition-colors"
                 />
                 <span className="absolute right-4 top-1/2 -translate-y-1/2 text-text-disabled text-sm">

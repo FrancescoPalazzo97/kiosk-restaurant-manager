@@ -15,7 +15,7 @@ export function AttendanceCalendar({ employee }: AttendanceCalendarProps) {
 
     const entranceRecords = store(s => s.entranceRecords);
     const startHour = store(s => s.startHour);
-    const lateTollerance = store(s => s.lateTollerance);
+    const lateTolerance = store(s => s.lateTolerance);
 
     const filteredRecords = useMemo(
         () => entranceRecords.filter(er => er.employeeId === employee.id),
@@ -50,7 +50,7 @@ export function AttendanceCalendar({ employee }: AttendanceCalendarProps) {
             {/* Griglia giorni */}
             <div className="grid grid-cols-7 gap-1">
                 {days.map((day, index) => {
-                    const status = getAttendanceStatus(day.date.toDate(), employee.createdAt, filteredRecords, startHour, lateTollerance);
+                    const status = getAttendanceStatus(day.date.toDate(), employee.createdAt, filteredRecords, startHour, lateTolerance);
                     return (
                         <div
                             key={index}

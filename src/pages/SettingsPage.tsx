@@ -1,7 +1,7 @@
 import { Settings } from "lucide-react";
 import { HourSettingCard } from "../components/HourSettingCard";
-import { LateTolleranceSettingCard } from "../components/LateTolleranceSettingCard";
-import { SoonTolleranceSettingCard } from "../components/SoonTolleranceSettingCard";
+import { LateToleranceSettingCard } from "../components/LateTolleranceSettingCard";
+import { SoonToleranceSettingCard } from "../components/SoonTolleranceSettingCard";
 
 export function SettingsPage() {
 
@@ -24,10 +24,10 @@ export function SettingsPage() {
                 <HourSettingCard />
 
                 {/* Tolleranza anticipo */}
-                <SoonTolleranceSettingCard />
+                <SoonToleranceSettingCard />
 
                 {/* Tolleranza ritardo */}
-                <LateTolleranceSettingCard />
+                <LateToleranceSettingCard />
             </div>
         </div>
     )

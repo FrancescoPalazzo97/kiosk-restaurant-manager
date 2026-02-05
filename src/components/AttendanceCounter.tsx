@@ -11,7 +11,7 @@ type AttendanceCounterProps = {
 export function AttendanceCounter({ employeeId, employeeCreation }: AttendanceCounterProps) {
     const entranceRecords = store(s => s.entranceRecords);
     const startHour = store(s => s.startHour);
-    const lateTollerance = store(s => s.lateTollerance);
+    const lateTolerance = store(s => s.lateTolerance);
 
     const today = dayjs();
     const days = getMonthDays(Number(today.format('YYYY')), Number(today.format('MM')));
@@ -32,7 +32,7 @@ export function AttendanceCounter({ employeeId, employeeCreation }: AttendanceCo
     const data = days.reduce(
         (acc, day) => {
             if (!day.isCurrentMonth) return acc;
-            const status = getAttendanceStatus(day.date.toDate(), employeeCreation, filteredRecords, startHour, lateTollerance);
+            const status = getAttendanceStatus(day.date.toDate(), employeeCreation, filteredRecords, startHour, lateTolerance);
             acc[status]++;
             return acc;
         },

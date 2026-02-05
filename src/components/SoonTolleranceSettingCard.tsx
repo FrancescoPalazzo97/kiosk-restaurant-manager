@@ -1,9 +1,9 @@
 import { Timer } from "lucide-react";
 import { store } from "../store/store";
 
-export function SoonTolleranceSettingCard() {
-    const soonTollerance = store(s => s.soonTollerance);
-    const setSoonTollerance = store(s => s.setSoonTollerance);
+export function SoonToleranceSettingCard() {
+    const soonTolerance = store(s => s.soonTolerance);
+    const setSoonTolerance = store(s => s.setSoonTolerance);
 
     return (
         <div className="bg-bg-secondary border border-border-soft rounded-xl p-6">
@@ -18,8 +18,8 @@ export function SoonTolleranceSettingCard() {
                 <input
                     type="number"
                     min={0}
-                    value={soonTollerance}
-                    onChange={e => setSoonTollerance(Number(e.target.value))}
+                    value={soonTolerance}
+                    onChange={e => setSoonTolerance(Number(e.target.value))}
                     className="w-full bg-bg-elevated border border-border-soft rounded-lg px-4 py-3 pr-16 text-text-primary text-lg font-mono focus:border-accent-primary focus:ring-1 focus:ring-accent-primary transition-colors"
                 />
                 <span className="absolute right-4 top-1/2 -translate-y-1/2 text-text-disabled text-sm">
