@@ -4,14 +4,14 @@ import { settingsSchema } from "../models/settings.model";
 
 type SettingsState = {
     startHour: string,
-    soonTollerance: number,
-    lateTollerance: number
+    soonTolerance: number,
+    lateTolerance: number
 }
 
 type SettingsActions = {
     setStartHour: (newStartHour: string) => void,
-    setSoonTollerance: (newSoonTollerance: number) => void,
-    setLateTollerance: (newLateTollerance: number) => void
+    setSoonTolerance: (newSoonTolerance: number) => void,
+    setLateTolerance: (newLateTolerance: number) => void
 }
 
 export type SettingsSlice = SettingsState & SettingsActions;
@@ -23,8 +23,8 @@ export const createSettingsSlice: StateCreator<
     SettingsSlice
 > = (set) => ({
     startHour: '08:00',
-    soonTollerance: 15,
-    lateTollerance: 5,
+    soonTolerance: 15,
+    lateTolerance: 5,
 
     setStartHour: (newStartHour) => {
         const validation = settingsSchema.shape.startHours.safeParse(newStartHour);
@@ -39,8 +39,8 @@ export const createSettingsSlice: StateCreator<
         })
     },
 
-    setSoonTollerance: (newSoonTollerance) => {
-        const validation = settingsSchema.shape.soonTollerance.safeParse(newSoonTollerance);
+    setSoonTolerance: (newSoonTolerance) => {
+        const validation = settingsSchema.shape.soonTolerance.safeParse(newSoonTolerance);
 
         if (!validation.success) {
             console.error(validation.error);
@@ -48,12 +48,12 @@ export const createSettingsSlice: StateCreator<
         }
 
         set(s => {
-            s.soonTollerance = validation.data
+            s.soonTolerance = validation.data
         })
     },
 
-    setLateTollerance: (newLateTollerance) => {
-        const validation = settingsSchema.shape.lateTollerance.safeParse(newLateTollerance);
+    setLateTolerance: (newLateTolerance) => {
+        const validation = settingsSchema.shape.lateTolerance.safeParse(newLateTolerance);
 
         if (!validation.success) {
             console.error(validation.error);
@@ -61,7 +61,7 @@ export const createSettingsSlice: StateCreator<
         }
 
         set(s => {
-            s.lateTollerance = validation.data
+            s.lateTolerance = validation.data
         })
     }
 })
